@@ -1,3 +1,4 @@
+/* eslint-disable no-else-return */
 /**
  * Given a number, replace this number with
  * the sum of its digits until we get to a one digit number.
@@ -14,12 +15,15 @@ function getSumOfDigits(num) {
   let sum = 0;
   let tmp = 0;
   let div = num;
-  while (div) {
+  if (div < 10) {
+    return div;
+  } else {
     tmp = div % 10;
     div = (div - tmp) / 10;
     sum += tmp;
+    getSumOfDigits(div);
   }
   return sum;
 }
-
+// getSumOfDigits(91);
 module.exports = getSumOfDigits;
