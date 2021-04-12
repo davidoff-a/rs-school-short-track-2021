@@ -1,11 +1,9 @@
 // 'use strict';
-function deleteDigit(/* n */) {
-  throw new Error('Not implemented');
-  // n=152;
-  // const arrayOfCipher = String(n).split('');
-  // const minCipher = Math.min(arrayOfCipher);
-  // const indexOfMinCipher = arrayOfCipher.indexOf(minCipher);
-  // const newNumber
-  // console.log(Number(arrayOfCipher.splice(indexOfMinCipher,1).join('')));
+function deleteDigit(n) {
+  const transformToArray = [...String(n)].map((letter) => Number(letter));
+  const minCipher = Math.min(...transformToArray);
+  transformToArray.splice(transformToArray.indexOf(minCipher), 1);
+  return Number(transformToArray.join(''));
 }
 module.exports = deleteDigit;
+// deleteDigit(152);

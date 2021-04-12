@@ -12,18 +12,8 @@
  *
  */
 function getSumOfDigits(num) {
-  let sum = 0;
-  let tmp = 0;
-  let div = num;
-  if (div < 10) {
-    return div;
-  } else {
-    tmp = div % 10;
-    div = (div - tmp) / 10;
-    sum += tmp;
-    getSumOfDigits(div);
-  }
-  return sum;
+  const sum = [...String(num)].reduce((acc, chr) => acc + Number(chr), 0);
+  return sum < 10 ? sum : getSumOfDigits(sum);
 }
 // getSumOfDigits(91);
 module.exports = getSumOfDigits;
