@@ -20,9 +20,16 @@
 function removeKFromList(list, k) {
   const l = list;
   let node = l.head;
+  // Итерирование до тех пор, пока не будет найден нужный элемент
+  // В худшем случае -- O(n)
   while (node !== null) {
+    // Если есть следующий элемент и его значение равно искомому --
+    // выставление ссылки на элемент, который следует за следующим, в текущий элемент O(1)
     if (node.next !== null && node.next.key === k) {
-      node = node.next.next;
+      if (node === l.head) {
+        l.head = l.head.next;
+      }
+      node.setNext(node.next.next);
       return;
     }
     node = node.next;
